@@ -140,7 +140,7 @@ export default function Home() {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <Accordion type="single" collapsible className="w-full">
+                      <Accordion className="w-full">
                         {level.topics.map((topic, idx) => (
                           <AccordionItem key={idx} value={`topic-${idx}`} className="border-slate-700">
                             <AccordionTrigger className="text-white hover:text-blue-300">
