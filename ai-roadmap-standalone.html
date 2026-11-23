@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer Roadmap 2026 - AWS Focus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #60a5fa;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #93c5fd;
+            margin-bottom: 30px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: rgba(30, 58, 138, 0.5);
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            color: #93c5fd;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background: #2563eb;
+            border-color: #60a5fa;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .level-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 2px solid rgba(71, 85, 105, 0.5);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: border-color 0.3s;
+        }
+        
+        .level-card:hover {
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+        
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .level-title {
+            font-size: 1.8em;
+            color: white;
+            margin-bottom: 8px;
+        }
+        
+        .level-desc {
+            color: #93c5fd;
+            font-size: 1.1em;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #ea580c;
+            color: white;
+            border-radius: 6px;
+            font-size: 0.85em;
+            margin-top: 8px;
+        }
+        
+        .topic {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .topic-title {
+            font-size: 1.3em;
+            color: #60a5fa;
+            margin-bottom: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .topic-content {
+            display: none;
+            margin-top: 15px;
+        }
+        
+        .topic.expanded .topic-content {
+            display: block;
+        }
+        
+        .topic.expanded .arrow {
+            transform: rotate(90deg);
+        }
+        
+        .arrow {
+            transition: transform 0.3s;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 1.1em;
+            color: #93c5fd;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .section-title.interview {
+            color: #fdba74;
+        }
+        
+        .section-title.tips {
+            color: #86efac;
+        }
+        
+        .section-title.aws {
+            color: #fdba74;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        li:before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .interview-q:before {
+            content: "❓";
+        }
+        
+        .tip:before {
+            content: "💡";
+        }
+        
+        .aws-item:before {
+            content: "☁️";
+        }
+        
+        .aws-box {
+            background: rgba(234, 88, 12, 0.1);
+            border: 1px solid rgba(234, 88, 12, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .service-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .service-name {
+            font-size: 1.3em;
+            color: #60a5fa;
+            margin-bottom: 5px;
+        }
+        
+        .service-purpose {
+            color: #94a3b8;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .color-blue { color: #3b82f6; }
+        .color-green { color: #22c55e; }
+        .color-yellow { color: #eab308; }
+        .color-red { color: #ef4444; }
+        .color-purple { color: #a855f7; }
+        .color-cyan { color: #06b6d4; }
+        .color-orange { color: #f97316; }
+        .color-pink { color: #ec4899; }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .level-title {
+                font-size: 1.5em;
+            }
+            
+            .level-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 AI Engineer Roadmap 2026 ☁️</h1>
+            <p class="subtitle">Complete guide from basics to production AI systems with AWS focus</p>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('roadmap')">📚 Learning Roadmap</button>
+            <button class="tab-btn" onclick="switchTab('aws')">☁️ AWS Engineer Focus</button>
+        </div>
+        
+        <div id="roadmap-content" class="tab-content active">
+            <!-- Roadmap levels will be inserted here by JavaScript -->
+        </div>
+        
+        <div id="aws-content" class="tab-content">
+            <!-- AWS content will be inserted here by JavaScript -->
+        </div>
+    </div>
+    
+    <script>
+        // Data
+        const roadmapData = [
+            {
+                level: 1,
+                title: "Basic Level",
+                color: "blue",
+                description: "Foundation concepts every AI engineer must master",
+                topics: [
+                    {
+                        title: "Computer Basics",
+                        concepts: [
+                            "How computers work: CPU, RAM, Storage hierarchy",
+                            "Binary, bits, bytes, and data representation",
+                            "Operating systems: processes, threads, memory management",
+                            "File systems and I/O operations",
+                            "Network basics: IP, TCP/UDP, HTTP/HTTPS"
+                        ],
+                        questions: [
+                            "Explain the difference between RAM and disk storage",
+                            "What happens when you type a URL in a browser?",
+                            "How does a CPU execute instructions?",
+                            "Explain virtual memory and paging"
+                        ],
+                        tips: [
+                            "Understand latency numbers: L1 cache (1ns), RAM (100ns), SSD (100μs), Network (1ms)",
+                            "Know when to use different storage types in production",
+                            "Debug performance issues by understanding resource bottlenecks"
+                        ]
+                    },
+                    {
+                        title: "Programming Fundamentals",
+                        concepts: [
+                            "Variables, data types, and type systems",
+                            "Control flow: if/else, loops, switch statements",
+                            "Functions and scope",
+                            "Input/Output operations",
+                            "Debugging and error handling"
+                        ],
+                        questions: [
+                            "What's the difference between pass-by-value and pass-by-reference?",
+                            "Explain scope and closure in programming",
+                            "How do you debug a program systematically?"
+                        ],
+                        tips: [
+                            "Let AI write boilerplate code, you focus on architecture",
+                            "Learn to read code faster than writing it",
+                            "Master one language deeply before learning others"
+                        ]
+                    },
+                    {
+                        title: "AI Introduction",
+                        concepts: [
+                            "What is AI, ML, Deep Learning? (The hierarchy)",
+                            "Supervised vs Unsupervised vs Reinforcement Learning",
+                            "Training data, models, and inference",
+                            "AI/ML pipeline overview",
+                            "Current AI landscape and applications"
+                        ],
+                        questions: [
+                            "Explain the difference between AI, ML, and Deep Learning",
+                            "What is the difference between training and inference?",
+                            "Give examples of supervised and unsupervised learning problems"
+                        ],
+                        tips: [
+                            "Focus on when to use AI vs traditional programming",
+                            "Understand the cost implications of training vs inference",
+                            "Know the limitations and biases in AI systems"
+                        ],
+                        aws: [
+                            "AWS SageMaker: managed ML platform for training and deployment",
+                            "AWS Bedrock: access to foundation models (Claude, Llama, etc.)",
+                            "AWS Comprehend: pre-built NLP services"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 2,
+                title: "Beginner Level",
+                color: "green",
+                description: "Core programming skills and tools",
+                topics: [
+                    {
+                        title: "Data Structures",
+                        concepts: [
+                            "Arrays and Lists: dynamic sizing, indexing",
+                            "Stacks and Queues: LIFO vs FIFO",
+                            "Hash Tables/Dictionaries: O(1) lookups, collision handling",
+                            "Sets: uniqueness and set operations",
+                            "Strings: immutability, common operations"
+                        ],
+                        questions: [
+                            "When would you use a list vs a set vs a dictionary?",
+                            "How does a hash table achieve O(1) lookup?",
+                            "Explain hash collisions and how to handle them"
+                        ],
+                        tips: [
+                            "Choose the right data structure for your access patterns",
+                            "Understand memory implications of each structure",
+                            "Know built-in methods and when to use them"
+                        ]
+                    },
+                    {
+                        title: "Git and Version Control",
+                        concepts: [
+                            "Git basics: clone, add, commit, push, pull",
+                            "Branching strategies: main, feature branches",
+                            "Merge vs Rebase",
+                            "Resolving conflicts",
+                            "GitHub/GitLab workflows"
+                        ],
+                        questions: [
+                            "Explain the difference between merge and rebase",
+                            "How do you resolve a merge conflict?",
+                            "Describe a good branching strategy for a team"
+                        ],
+                        tips: [
+                            "Commit early and often with clear messages",
+                            "Never commit secrets or credentials",
+                            "Review diffs before committing"
+                        ],
+                        aws: [
+                            "AWS CodeCommit: managed Git repositories",
+                            "AWS CodePipeline: CI/CD with Git integration"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 3,
+                title: "Intermediate Level",
+                color: "yellow",
+                description: "Object-oriented programming and web technologies",
+                topics: [
+                    {
+                        title: "Object-Oriented Programming",
+                        concepts: [
+                            "Classes and Objects: blueprints and instances",
+                            "Encapsulation: private vs public",
+                            "Inheritance: parent-child relationships",
+                            "Polymorphism: method overriding and interfaces",
+                            "Composition vs Inheritance"
+                        ],
+                        questions: [
+                            "Explain the four pillars of OOP",
+                            "When would you use composition over inheritance?",
+                            "What are abstract classes and interfaces?"
+                        ],
+                        tips: [
+                            "Favor composition over inheritance for flexibility",
+                            "Use OOP for modeling real-world entities",
+                            "Don't over-engineer with unnecessary classes"
+                        ]
+                    },
+                    {
+                        title: "APIs and Web Services",
+                        concepts: [
+                            "REST API principles: GET, POST, PUT, DELETE",
+                            "HTTP status codes: 2xx, 4xx, 5xx",
+                            "JSON data format",
+                            "API authentication: API keys, OAuth, JWT",
+                            "Rate limiting and throttling"
+                        ],
+                        questions: [
+                            "What is REST and what are its constraints?",
+                            "Explain the difference between PUT and PATCH",
+                            "How would you secure an API?"
+                        ],
+                        tips: [
+                            "Always handle API errors gracefully",
+                            "Implement retry logic with exponential backoff",
+                            "Monitor API usage and costs"
+                        ],
+                        aws: [
+                            "AWS API Gateway: create, publish, and manage APIs",
+                            "AWS Lambda: serverless API backends",
+                            "AWS Cognito: user authentication for APIs"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 4,
+                title: "Advanced Level",
+                color: "red",
+                description: "System design and cloud infrastructure",
+                awsRelevance: "Critical for AWS roles - this is where cloud expertise shines",
+                topics: [
+                    {
+                        title: "System Design",
+                        concepts: [
+                            "Scalability: horizontal vs vertical scaling",
+                            "Load balancing strategies",
+                            "Caching layers: CDN, application, database",
+                            "Microservices vs Monolithic architecture",
+                            "Message queues and event-driven architecture",
+                            "CAP theorem and trade-offs"
+                        ],
+                        questions: [
+                            "Design a URL shortener service",
+                            "How would you design Twitter/Instagram?",
+                            "Explain the CAP theorem with real examples",
+                            "How do you handle 10x traffic growth?"
+                        ],
+                        tips: [
+                            "Always ask about scale, users, and latency requirements",
+                            "Draw diagrams to explain your design",
+                            "Consider cost implications of your choices"
+                        ],
+                        aws: [
+                            "AWS ELB: Elastic Load Balancing",
+                            "AWS Auto Scaling: automatic horizontal scaling",
+                            "AWS CloudFront: CDN for global content delivery",
+                            "AWS SQS/SNS: message queues and pub/sub"
+                        ]
+                    },
+                    {
+                        title: "Cloud Platforms (AWS Focus)",
+                        concepts: [
+                            "Compute: EC2, Lambda, ECS/EKS, Fargate",
+                            "Storage: S3, EBS, EFS, Glacier",
+                            "Networking: VPC, subnets, security groups",
+                            "Databases: RDS, DynamoDB, Aurora",
+                            "IAM: users, roles, policies, least privilege",
+                            "Cost optimization and billing"
+                        ],
+                        questions: [
+                            "When would you use EC2 vs Lambda vs Fargate?",
+                            "Explain the difference between S3 storage classes",
+                            "How does AWS IAM work?",
+                            "How do you optimize AWS costs?"
+                        ],
+                        tips: [
+                            "Start with serverless (Lambda) for new projects",
+                            "Use S3 for all file storage needs",
+                            "Always tag resources for cost tracking",
+                            "Enable CloudWatch for monitoring from day one"
+                        ],
+                        aws: [
+                            "AWS SageMaker: ML model training and deployment",
+                            "AWS Bedrock: access to LLMs",
+                            "AWS Lambda: run inference code serverlessly"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 5,
+                title: "Database Development",
+                color: "purple",
+                description: "Data storage and retrieval systems",
+                topics: [
+                    {
+                        title: "SQL Databases",
+                        concepts: [
+                            "Relational model: tables, rows, columns",
+                            "Primary keys and foreign keys",
+                            "SQL queries: SELECT, JOIN, WHERE, GROUP BY",
+                            "Indexes and query optimization",
+                            "ACID properties",
+                            "Transactions and locks"
+                        ],
+                        questions: [
+                            "Explain the different types of JOINs",
+                            "What is an index and how does it improve performance?",
+                            "Explain ACID properties with examples",
+                            "When would you denormalize a database?"
+                        ],
+                        tips: [
+                            "Index columns used in WHERE and JOIN clauses",
+                            "Avoid SELECT * in production queries",
+                            "Use connection pooling for better performance"
+                        ],
+                        aws: [
+                            "AWS RDS: managed PostgreSQL, MySQL, MariaDB",
+                            "AWS Aurora: high-performance MySQL/PostgreSQL compatible"
+                        ]
+                    },
+                    {
+                        title: "NoSQL Databases",
+                        concepts: [
+                            "Document stores: MongoDB, DocumentDB",
+                            "Key-value stores: DynamoDB, Redis",
+                            "Graph databases: Neo4j, Neptune",
+                            "CAP theorem in NoSQL",
+                            "Eventual consistency vs strong consistency"
+                        ],
+                        questions: [
+                            "When would you choose NoSQL over SQL?",
+                            "Explain eventual consistency",
+                            "What are the trade-offs of using DynamoDB?"
+                        ],
+                        tips: [
+                            "NoSQL is not schema-less, it's schema-flexible",
+                            "Design NoSQL schemas based on access patterns",
+                            "DynamoDB is excellent for key-value and simple queries"
+                        ],
+                        aws: [
+                            "AWS DynamoDB: serverless NoSQL",
+                            "AWS DocumentDB: MongoDB-compatible",
+                            "AWS Neptune: graph database"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 6,
+                title: "Data Science",
+                color: "cyan",
+                description: "Data analysis and manipulation",
+                topics: [
+                    {
+                        title: "NumPy & Pandas",
+                        concepts: [
+                            "NumPy arrays and vectorization",
+                            "DataFrames and Series in Pandas",
+                            "Data cleaning: handling missing values",
+                            "Filtering, sorting, grouping",
+                            "Merging and joining datasets",
+                            "Aggregation and pivot tables"
+                        ],
+                        questions: [
+                            "What is broadcasting in NumPy?",
+                            "What's the difference between loc and iloc?",
+                            "How do you handle missing data?",
+                            "Explain groupby operations"
+                        ],
+                        tips: [
+                            "Use vectorized operations, avoid loops",
+                            "Profile memory usage for large datasets",
+                            "Master boolean indexing for filtering"
+                        ]
+                    },
+                    {
+                        title: "Statistics",
+                        concepts: [
+                            "Descriptive statistics: mean, median, mode",
+                            "Probability distributions",
+                            "Hypothesis testing basics",
+                            "Correlation vs causation",
+                            "Outlier detection"
+                        ],
+                        questions: [
+                            "Explain correlation vs causation with examples",
+                            "What is a p-value?",
+                            "How do you detect and handle outliers?"
+                        ],
+                        tips: [
+                            "Always visualize your data before modeling",
+                            "Check for data quality issues early",
+                            "Look for patterns, anomalies, and biases"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 7,
+                title: "Machine Learning",
+                color: "orange",
+                description: "Classical ML algorithms and techniques",
+                topics: [
+                    {
+                        title: "Supervised Learning",
+                        concepts: [
+                            "Linear Regression",
+                            "Logistic Regression",
+                            "Decision Trees and Random Forests",
+                            "Gradient Boosting: XGBoost, LightGBM",
+                            "Model evaluation: accuracy, precision, recall, F1"
+                        ],
+                        questions: [
+                            "Explain bias-variance tradeoff",
+                            "When would you use logistic regression vs decision trees?",
+                            "What is overfitting and how do you prevent it?",
+                            "Explain precision vs recall with examples"
+                        ],
+                        tips: [
+                            "Start with simple models",
+                            "Always split data: train/validation/test",
+                            "Cross-validation for robust evaluation",
+                            "Feature engineering often beats complex models"
+                        ],
+                        aws: [
+                            "AWS SageMaker: built-in ML algorithms",
+                            "AWS SageMaker Autopilot: automated ML"
+                        ]
+                    },
+                    {
+                        title: "Unsupervised Learning",
+                        concepts: [
+                            "K-Means clustering",
+                            "Hierarchical clustering",
+                            "PCA: dimensionality reduction",
+                            "Anomaly detection"
+                        ],
+                        questions: [
+                            "How does K-Means work?",
+                            "When would you use PCA?",
+                            "How do you choose the number of clusters?"
+                        ],
+                        tips: [
+                            "Normalize features before clustering",
+                            "Use elbow method for K selection",
+                            "Visualize clusters to validate results"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 8,
+                title: "Deep Learning",
+                color: "pink",
+                description: "Advanced neural network architectures",
+                topics: [
+                    {
+                        title: "Neural Networks",
+                        concepts: [
+                            "Activation functions: ReLU, sigmoid, tanh",
+                            "Backpropagation",
+                            "Gradient descent and optimization",
+                            "Loss functions",
+                            "Regularization: L1, L2, dropout"
+                        ],
+                        questions: [
+                            "Explain backpropagation in simple terms",
+                            "Why do we need activation functions?",
+                            "What is gradient descent?",
+                            "Explain vanishing gradient problem"
+                        ],
+                        tips: [
+                            "Use ReLU activation for hidden layers",
+                            "Start with small networks",
+                            "Monitor both training and validation loss",
+                            "Learning rate is the most important hyperparameter"
+                        ]
+                    },
+                    {
+                        title: "CNNs & RNNs",
+                        concepts: [
+                            "Convolutional Neural Networks for images",
+                            "Transfer learning with pre-trained models",
+                            "LSTMs for sequences",
+                            "Transformers architecture"
+                        ],
+                        questions: [
+                            "How does a convolutional layer work?",
+                            "What is transfer learning?",
+                            "Why use LSTMs instead of vanilla RNNs?",
+                            "How are Transformers different from RNNs?"
+                        ],
+                        tips: [
+                            "Always use transfer learning for image tasks",
+                            "Data augmentation is crucial for small datasets",
+                            "For sequences, use Transformers now instead of RNNs"
+                        ],
+                        aws: [
+                            "AWS SageMaker: supports TensorFlow, PyTorch",
+                            "AWS EC2 P4/P5: GPU instances for training",
+                            "AWS Deep Learning AMIs"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 9,
+                title: "Computer Vision",
+                color: "blue",
+                description: "Image and video processing",
+                topics: [
+                    {
+                        title: "Image Processing",
+                        concepts: [
+                            "Image representation: pixels, channels",
+                            "Filtering, edge detection",
+                            "Color space conversions",
+                            "Image transformations"
+                        ],
+                        questions: [
+                            "Explain how images are represented digitally",
+                            "What is edge detection?",
+                            "When would you convert RGB to grayscale?"
+                        ],
+                        tips: [
+                            "OpenCV is the standard library",
+                            "Resize images to reduce processing time",
+                            "Normalize pixel values before models"
+                        ]
+                    },
+                    {
+                        title: "Object Detection",
+                        concepts: [
+                            "Image classification",
+                            "Object detection: YOLO, R-CNN",
+                            "Semantic segmentation",
+                            "OCR (Optical Character Recognition)"
+                        ],
+                        questions: [
+                            "Difference between detection and segmentation?",
+                            "How does YOLO achieve real-time detection?",
+                            "What is OCR and what are its challenges?"
+                        ],
+                        tips: [
+                            "Use cloud services for common CV tasks",
+                            "Fine-tune pre-trained models",
+                            "Consider edge devices for latency-sensitive apps"
+                        ],
+                        aws: [
+                            "AWS Rekognition: pre-built CV for face/object detection",
+                            "AWS Panorama: CV at the edge"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 10,
+                title: "Natural Language Processing",
+                color: "green",
+                description: "Text processing and language understanding",
+                topics: [
+                    {
+                        title: "Text Processing",
+                        concepts: [
+                            "Tokenization",
+                            "Stop word removal, stemming/lemmatization",
+                            "TF-IDF",
+                            "Word embeddings: Word2Vec, GloVe"
+                        ],
+                        questions: [
+                            "What is tokenization and why is it important?",
+                            "Explain TF-IDF and its use cases",
+                            "What are word embeddings?"
+                        ],
+                        tips: [
+                            "Modern LLMs handle tokenization internally",
+                            "Use pre-trained embeddings when possible",
+                            "Clean text carefully"
+                        ]
+                    },
+                    {
+                        title: "NLP Models",
+                        concepts: [
+                            "Sentiment analysis",
+                            "Named Entity Recognition (NER)",
+                            "Text classification",
+                            "Transformers: BERT, GPT",
+                            "Attention mechanisms"
+                        ],
+                        questions: [
+                            "How does sentiment analysis work?",
+                            "What is BERT and how is it different from GPT?",
+                            "Explain attention mechanism"
+                        ],
+                        tips: [
+                            "Use pre-trained models and fine-tune",
+                            "More data beats better algorithms in NLP",
+                            "Consider inference latency for production"
+                        ],
+                        aws: [
+                            "AWS Comprehend: sentiment, entities, key phrases",
+                            "AWS Translate: neural machine translation",
+                            "AWS Bedrock: access to Claude, Llama LLMs"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 11,
+                title: "Generative AI",
+                color: "red",
+                description: "Large Language Models and generative systems",
+                awsRelevance: "Hot area for AWS AI/ML roles",
+                topics: [
+                    {
+                        title: "Foundation Models",
+                        concepts: [
+                            "LLMs: GPT, Claude, Llama",
+                            "Pre-training vs fine-tuning vs prompting",
+                            "Transformer architecture",
+                            "Model sizes and compute requirements",
+                            "Inference costs"
+                        ],
+                        questions: [
+                            "Explain how GPT models work",
+                            "When would you fine-tune vs use prompting?",
+                            "What are the main challenges with LLMs?",
+                            "How do you evaluate LLM outputs?"
+                        ],
+                        tips: [
+                            "Start with API access before self-hosting",
+                            "Prompting often beats fine-tuning",
+                            "Monitor token usage - costs can spiral",
+                            "Always have human review for critical outputs"
+                        ],
+                        aws: [
+                            "AWS Bedrock: Claude, Llama 3, Titan, Cohere",
+                            "AWS SageMaker JumpStart: deploy open-source models",
+                            "AWS Bedrock Agents: build LLM-powered agents"
+                        ]
+                    },
+                    {
+                        title: "Prompt Engineering",
+                        concepts: [
+                            "Zero-shot, few-shot prompting",
+                            "Chain-of-thought reasoning",
+                            "Prompt templates",
+                            "Temperature and sampling",
+                            "Prompt injection and safety"
+                        ],
+                        questions: [
+                            "What is few-shot prompting?",
+                            "How does chain-of-thought improve reasoning?",
+                            "What is prompt injection?",
+                            "How do you systematically improve prompts?"
+                        ],
+                        tips: [
+                            "Be specific and provide examples",
+                            "Lower temperature for factual tasks",
+                            "Higher temperature for creative tasks",
+                            "Version control your prompts like code"
+                        ]
+                    },
+                    {
+                        title: "RAG & LangChain",
+                        concepts: [
+                            "Retrieval-Augmented Generation",
+                            "Vector databases",
+                            "LangChain framework",
+                            "LLM agents with tools",
+                            "Memory and context management"
+                        ],
+                        questions: [
+                            "What problem does LangChain solve?",
+                            "Explain RAG architecture",
+                            "How do vector databases work?",
+                            "What are LLM agents?"
+                        ],
+                        tips: [
+                            "RAG is the most important pattern to know",
+                            "Use vector DBs for semantic search",
+                            "Chunk documents intelligently",
+                            "Cache expensive LLM calls"
+                        ],
+                        aws: [
+                            "AWS Bedrock Knowledge Bases: managed RAG",
+                            "AWS OpenSearch: vector search",
+                            "AWS Kendra: intelligent search"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 12,
+                title: "Automation",
+                color: "yellow",
+                description: "Automated testing and processes",
+                topics: [
+                    {
+                        title: "API Testing",
+                        concepts: [
+                            "REST API testing",
+                            "Integration testing",
+                            "Load testing",
+                            "API monitoring",
+                            "CI/CD pipelines"
+                        ],
+                        questions: [
+                            "How do you test APIs effectively?",
+                            "What's the difference between unit and integration tests?",
+                            "How do you mock external dependencies?"
+                        ],
+                        tips: [
+                            "Write tests before deploying",
+                            "Automate tests in CI/CD",
+                            "Monitor API health continuously"
+                        ],
+                        aws: [
+                            "AWS CodePipeline: CI/CD automation",
+                            "AWS CodeBuild: run tests automatically",
+                            "AWS CloudWatch: monitoring"
+                        ]
+                    },
+                    {
+                        title: "Infrastructure as Code",
+                        concepts: [
+                            "CloudFormation, Terraform",
+                            "Automated deployments",
+                            "Blue-green deployments",
+                            "Monitoring automation"
+                        ],
+                        questions: [
+                            "What is Infrastructure as Code?",
+                            "Explain blue-green deployment",
+                            "How do you automate rollbacks?"
+                        ],
+                        tips: [
+                            "Version control all infrastructure code",
+                            "Test infrastructure changes in staging",
+                            "Use IaC for all AWS resources"
+                        ],
+                        aws: [
+                            "AWS CloudFormation: native IaC",
+                            "AWS CDK: infrastructure in code",
+                            "AWS Step Functions: workflow automation"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 13,
+                title: "AI Agents",
+                color: "purple",
+                description: "Building autonomous AI systems",
+                awsRelevance: "Emerging area with AWS Bedrock Agents",
+                topics: [
+                    {
+                        title: "Agent Frameworks",
+                        concepts: [
+                            "LangChain agents: ReAct pattern",
+                            "Tool use and function calling",
+                            "Agent memory",
+                            "Multi-agent systems",
+                            "Safety and guardrails"
+                        ],
+                        questions: [
+                            "What makes an AI system an 'agent'?",
+                            "How do agents use tools?",
+                            "What are challenges in building reliable agents?",
+                            "Explain multi-agent collaboration"
+                        ],
+                        tips: [
+                            "Start simple: single agent with few tools",
+                            "Agents can be unreliable - add guardrails",
+                            "Log all agent actions",
+                            "Human-in-the-loop for high-stakes decisions"
+                        ],
+                        aws: [
+                            "AWS Bedrock Agents: build agents with AWS services",
+                            "AWS Lambda: agent action executors",
+                            "AWS Step Functions: agent orchestration"
+                        ]
+                    }
+                ]
+            },
+            {
+                level: 14,
+                title: "Real Projects",
+                color: "cyan",
+                description: "Build, deploy, and maintain production systems",
+                awsRelevance: "Prove AWS expertise - end-to-end systems",
+                topics: [
+                    {
+                        title: "Production Best Practices",
+                        concepts: [
+                            "Monitoring: metrics, logs, traces",
+                            "Error handling and graceful degradation",
+                            "Scaling strategies",
+                            "Security: auth, secrets, encryption",
+                            "Disaster recovery",
+                            "Cost optimization",
+                            "Incident response"
+                        ],
+                        questions: [
+                            "How do you monitor an ML model in production?",
+                            "What happens when your system goes down?",
+                            "How do you handle a 10x traffic spike?",
+                            "Explain your approach to incident response"
+                        ],
+                        tips: [
+                            "Monitoring is not optional",
+                            "Always have rollback procedures",
+                            "Test disaster recovery regularly",
+                            "Set up cost alerts"
+                        ],
+                        aws: [
+                            "AWS CloudWatch: metrics, logs, alarms",
+                            "AWS SNS: alerts and notifications",
+                            "AWS Cost Anomaly Detection"
+                        ]
+                    },
+                    {
+                        title: "Getting Hired",
+                        concepts: [
+                            "Resume optimization",
+                            "LinkedIn for AI/ML roles",
+                            "Interview preparation",
+                            "System design interviews",
+                            "Behavioral interviews: STAR method",
+                            "Portfolio projects",
+                            "AWS certifications"
+                        ],
+                        questions: [
+                            "Walk me through a project you built",
+                            "What challenges did you face?",
+                            "How would you scale this project?"
+                        ],
+                        tips: [
+                            "Build projects on AWS to show cloud skills",
+                            "Get AWS Solutions Architect certification",
+                            "Network: LinkedIn, conferences, meetups",
+                            "Practice interviews with friends",
+                            "Learn from rejections"
+                        ]
+                    }
+                ]
+            }
+        ];
+        
+        // Render functions
+        function renderRoadmap() {
+            const container = document.getElementById('roadmap-content');
+            container.innerHTML = roadmapData.map(level => `
+                <div class="level-card">
+                    <div class="level-header">
+                        <div>
+                            <h2 class="level-title color-${level.color}">Level ${level.level}: ${level.title}</h2>
+                            <p class="level-desc">${level.description}</p>
+                            ${level.awsRelevance ? `<div class="badge">⭐ ${level.awsRelevance}</div>` : ''}
+                        </div>
+                    </div>
+                    ${level.topics.map((topic, idx) => `
+                        <div class="topic" id="level${level.level}-topic${idx}">
+                            <div class="topic-title" onclick="toggleTopic('level${level.level}-topic${idx}')">
+                                ${topic.title}
+                                <span class="arrow">▶</span>
+                            </div>
+                            <div class="topic-content">
+                                <div class="section">
+                                    <h4 class="section-title">📚 Key Concepts</h4>
+                                    <ul>
+                                        ${topic.concepts.map(c => `<li>${c}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div class="section">
+                                    <h4 class="section-title interview">❓ Interview Questions</h4>
+                                    <ul>
+                                        ${topic.questions.map(q => `<li class="interview-q">${q}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div class="section">
+                                    <h4 class="section-title tips">💡 Practical Tips</h4>
+                                    <ul>
+                                        ${topic.tips.map(t => `<li class="tip">${t}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                ${topic.aws ? `
+                                    <div class="aws-box">
+                                        <h4 class="section-title aws">☁️ AWS Services</h4>
+                                        <ul>
+                                            ${topic.aws.map(a => `<li class="aws-item">${a}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+        }
+        
+        function renderAWS() {
+            const container = document.getElementById('aws-content');
+            container.innerHTML = `
+                <div class="level-card">
+                    <h2 class="level-title" style="color: #fdba74;">☁️ AWS AI/ML Engineer Focus</h2>
+                    <p class="level-desc">Essential AWS services and concepts for AI/ML engineering roles</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <h3 style="color: #60a5fa; margin-bottom: 20px;">Core AI/ML Services</h3>
+                        
+                        <div class="service-card">
+                            <h4 class="service-name">Amazon SageMaker</h4>
+                            <p class="service-purpose">End-to-end ML platform</p>
+                            <ul>
+                                <li>Built-in algorithms and frameworks (TensorFlow, PyTorch)</li>
+                                <li>Training jobs with distributed computing</li>
+                                <li>Model endpoints with auto-scaling</li>
+                                <li>Model Monitor for drift detection</li>
+                                <li>Feature Store for ML features</li>
+                            </ul>
+                            <div style="margin-top: 10px; color: #86efac;">
+                                <strong>When to use:</strong> Custom ML models, training at scale, MLOps
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h4 class="service-name">Amazon Bedrock</h4>
+                            <p class="service-purpose">Access foundation models via API</p>
+                            <ul>
+                                <li>Models: Claude (Anthropic), Llama 3, Amazon Titan, Cohere</li>
+                                <li>Knowledge Bases: managed RAG implementation</li>
+                                <li>Agents: build LLM-powered agents with tool use</li>
+                                <li>Guardrails for content filtering and safety</li>
+                                <li>Private and secure - data not used for training</li>
+                            </ul>
+                            <div style="margin-top: 10px; color: #86efac;">
+                                <strong>When to use:</strong> LLM applications, chatbots, RAG, generative AI
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h4 class="service-name">AWS Lambda</h4>
+                            <p class="service-purpose">Serverless compute</p>
+                            <ul>
+                                <li>Run code without managing servers</li>
+                                <li>Auto-scaling and high availability</li>
+                                <li>Pay only for compute time used</li>
+                                <li>Integrates with 200+ AWS services</li>
+                            </ul>
+                            <div style="margin-top: 10px; color: #86efac;">
+                                <strong>When to use:</strong> API backends, ML inference, event-driven processing
+                            </div>
+                        </div>
+                        
+                        <h3 style="color: #60a5fa; margin: 30px 0 20px;">Pre-built AI Services</h3>
+                        
+                        <div class="service-card">
+                            <h4 class="service-name">Amazon Rekognition</h4>
+                            <p class="service-purpose">Computer vision</p>
+                            <ul>
+                                <li>Face detection and recognition</li>
+                                <li>Object and scene detection</li>
+                                <li>Content moderation</li>
+                                <li>Text in images (OCR)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h4 class="service-name">Amazon Comprehend</h4>
+                            <p class="service-purpose">Natural language processing</p>
+                            <ul>
+                                <li>Sentiment analysis</li>
+                                <li>Entity recognition</li>
+                                <li>Key phrase extraction</li>
+                                <li>Language detection</li>
+                            </ul>
+                        </div>
+                        
+                        <h3 style="color: #fdba74; margin: 30px 0 20px;">🎯 Interview Topics for AWS Roles</h3>
+                        
+                        <div class="service-card">
+                            <h4 class="service-name">Service Selection</h4>
+                            <ul class="interview-q">
+                                <li>When would you use SageMaker vs Bedrock vs pre-built services?</li>
+                                <li>How do you decide between Lambda and EC2 for ML inference?</li>
+                                <li>Compare S3, EFS, and EBS for ML data storage</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h4 class="service-name">Cost Optimization</h4>
+                            <ul class="interview-q">
+                                <li>How do you optimize SageMaker training costs?</li>
+                                <li>Explain S3 storage classes and when to use each</li>
+                                <li>What are the cost implications of real-time vs batch inference?</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h4 class="service-name">Architecture</h4>
+                            <ul class="interview-q">
+                                <li>Design a scalable ML inference API on AWS</li>
+                                <li>How would you build a RAG system using AWS services?</li>
+                                <li>Architect a real-time CV system processing video streams</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="aws-box" style="margin-top: 30px;">
+                            <h4 style="color: #fdba74; margin-bottom: 15px;">💡 Tips for AWS AI/ML Engineer Interviews</h4>
+                            <div style="margin-bottom: 15px;">
+                                <strong style="color: #93c5fd;">Before the Interview:</strong>
+                                <ul style="margin-top: 8px;">
+                                    <li>Get AWS Certified Solutions Architect Associate</li>
+                                    <li>Consider AWS Machine Learning Specialty certification</li>
+                                    <li>Build 2-3 projects deployed on AWS</li>
+                                    <li>Know AWS Free Tier and cost optimization</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong style="color: #93c5fd;">During Technical Interviews:</strong>
+                                <ul style="margin-top: 8px;">
+                                    <li>Always mention cost implications</li>
+                                    <li>Discuss trade-offs between services</li>
+                                    <li>Show security best practices awareness</li>
+                                    <li>Mention monitoring and observability</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Event handlers
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tab + '-content').classList.add('active');
+        }
+        
+        function toggleTopic(id) {
+            const topic = document.getElementById(id);
+            topic.classList.toggle('expanded');
+        }
+        
+        // Initialize
+        renderRoadmap();
+        renderAWS();
+    </script>
+</body>
+</html>
