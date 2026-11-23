@@ -5,264 +5,290 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Engineer Roadmap 2026 - AWS Focus</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,680&family=Outfit:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg: #f4efe7;
+            --ink: #1c1915;
+            --muted: #615b53;
+            --line: #e6ddd0;
+            --card: rgba(255, 252, 248, 0.92);
+            --accent: #c2410c;
+            --accent-soft: #fff1e8;
+            --green: #166534;
+            --green-soft: #ecf8f1;
+            --amber: #92400e;
+            --amber-soft: #fff7eb;
+            --shadow: 0 20px 50px rgba(58, 36, 14, 0.07);
         }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
-            color: #e2e8f0;
+            font-family: Outfit, sans-serif;
+            color: var(--ink);
             line-height: 1.6;
             min-height: 100vh;
-            padding: 20px;
+            background:
+                radial-gradient(900px 420px at -10% -10%, #ffd8bf 0%, transparent 60%),
+                radial-gradient(800px 380px at 110% -20%, #efe4ff 0%, transparent 55%),
+                var(--bg);
+            padding: 28px 18px 80px;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+
+        .container { max-width: 920px; margin: 0 auto; }
+
+        .hero { padding: 18px 6px 8px; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 14px;
         }
-        
-        header {
-            text-align: center;
-            padding: 30px 20px;
-            margin-bottom: 40px;
-        }
-        
+
         h1 {
-            font-size: 2.5em;
-            color: #60a5fa;
-            margin-bottom: 15px;
+            font-family: Fraunces, serif;
+            font-size: clamp(2.6rem, 6vw, 4.4rem);
+            font-weight: 560;
+            letter-spacing: -0.045em;
+            line-height: 0.95;
+            color: var(--ink);
+            max-width: 12ch;
         }
-        
+
         .subtitle {
-            font-size: 1.2em;
-            color: #93c5fd;
-            margin-bottom: 30px;
+            margin-top: 18px;
+            max-width: 42rem;
+            font-size: 1.12rem;
+            color: var(--muted);
         }
-        
+
         .tabs {
+            position: sticky;
+            top: 14px;
+            z-index: 20;
             display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            gap: 6px;
+            width: fit-content;
+            max-width: 100%;
+            margin: 28px 0 22px;
+            padding: 6px;
+            background: rgba(255, 252, 248, 0.82);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 8px 24px rgba(58, 36, 14, 0.06);
         }
-        
+
         .tab-btn {
-            padding: 12px 24px;
-            background: rgba(30, 58, 138, 0.5);
-            border: 2px solid rgba(96, 165, 250, 0.3);
-            color: #93c5fd;
-            border-radius: 8px;
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 10px 16px;
+            border-radius: 999px;
             cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
         }
-        
+
         .tab-btn.active {
-            background: #2563eb;
-            border-color: #60a5fa;
-            color: white;
+            background: var(--ink);
+            color: #fffaf5;
         }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
         .level-card {
-            background: rgba(30, 41, 59, 0.8);
-            border: 2px solid rgba(71, 85, 105, 0.5);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            transition: border-color 0.3s;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 22px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow);
         }
-        
-        .level-card:hover {
-            border-color: rgba(96, 165, 250, 0.5);
-        }
-        
+
         .level-header {
             display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .level-title {
-            font-size: 1.8em;
-            color: white;
+            gap: 16px;
+            align-items: flex-start;
             margin-bottom: 8px;
         }
-        
-        .level-desc {
-            color: #93c5fd;
-            font-size: 1.1em;
+
+        .level-num {
+            flex: 0 0 auto;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            background: var(--ink);
+            color: #fffaf5;
+            font-family: Fraunces, serif;
+            font-size: 1.15rem;
         }
-        
+
+        .level-title {
+            font-family: Fraunces, serif;
+            font-size: 1.7rem;
+            font-weight: 560;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            line-height: 1.1;
+        }
+
+        .level-desc { color: var(--muted); margin-top: 4px; }
+
         .badge {
             display: inline-block;
-            padding: 6px 12px;
-            background: #ea580c;
-            color: white;
-            border-radius: 6px;
-            font-size: 0.85em;
-            margin-top: 8px;
-        }
-        
-        .topic {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(71, 85, 105, 0.3);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .topic-title {
-            font-size: 1.3em;
-            color: #60a5fa;
-            margin-bottom: 15px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .topic-content {
-            display: none;
-            margin-top: 15px;
-        }
-        
-        .topic.expanded .topic-content {
-            display: block;
-        }
-        
-        .topic.expanded .arrow {
-            transform: rotate(90deg);
-        }
-        
-        .arrow {
-            transition: transform 0.3s;
-        }
-        
-        .section {
-            margin-bottom: 25px;
-        }
-        
-        .section-title {
-            font-size: 1.1em;
-            color: #93c5fd;
-            margin-bottom: 12px;
+            margin-top: 10px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.82rem;
             font-weight: 600;
         }
-        
-        .section-title.interview {
-            color: #fdba74;
+
+        .topic {
+            margin-top: 10px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #fff;
+            overflow: hidden;
         }
-        
-        .section-title.tips {
-            color: #86efac;
+
+        .topic-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 16px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.02rem;
+            color: var(--ink);
         }
-        
-        .section-title.aws {
-            color: #fdba74;
+
+        .topic-title:hover { background: #faf7f2; }
+
+        .arrow {
+            width: 9px;
+            height: 9px;
+            border-right: 2px solid #8a8178;
+            border-bottom: 2px solid #8a8178;
+            transform: rotate(-45deg);
+            transition: transform 0.2s ease;
+            flex: 0 0 auto;
         }
-        
-        ul {
-            list-style: none;
-            padding-left: 0;
+
+        .topic.expanded .arrow { transform: rotate(45deg); }
+
+        .topic-content { display: none; padding: 0 16px 16px; }
+        .topic.expanded .topic-content { display: block; }
+
+        .section { margin-top: 14px; }
+
+        .section-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
         }
-        
+
+        .section-title.interview { color: var(--amber); }
+        .section-title.tips { color: var(--green); }
+        .section-title.aws { color: var(--accent); }
+
+        ul { list-style: none; }
+
         li {
-            padding: 8px 0;
-            padding-left: 25px;
             position: relative;
+            padding: 7px 0 7px 16px;
+            color: #2c2824;
         }
-        
+
         li:before {
-            content: "▪";
+            content: "";
             position: absolute;
             left: 0;
-            color: #60a5fa;
+            top: 0.85em;
+            width: 6px;
+            height: 6px;
+            border-radius: 99px;
+            background: #d6cfc4;
         }
-        
-        .interview-q:before {
-            content: "❓";
+
+        .interview-q:before { background: #d97706; }
+        .tip:before { background: #16a34a; }
+        .aws-item:before { background: var(--accent); }
+
+        .aws-box, .when {
+            margin-top: 14px;
+            padding: 14px 14px 6px;
+            border-radius: 14px;
+            background: var(--accent-soft);
         }
-        
-        .tip:before {
-            content: "💡";
+
+        .when {
+            padding: 12px 14px;
+            color: #7c2d12;
+            background: var(--green-soft);
+            color: var(--green);
         }
-        
-        .aws-item:before {
-            content: "☁️";
+
+        .group-title {
+            margin: 26px 0 12px;
+            font-family: Fraunces, serif;
+            font-size: 1.45rem;
+            letter-spacing: -0.03em;
         }
-        
-        .aws-box {
-            background: rgba(234, 88, 12, 0.1);
-            border: 1px solid rgba(234, 88, 12, 0.3);
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 15px;
-        }
-        
+
         .service-card {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 12px;
         }
-        
+
         .service-name {
-            font-size: 1.3em;
-            color: #60a5fa;
-            margin-bottom: 5px;
+            font-family: Fraunces, serif;
+            font-size: 1.35rem;
+            letter-spacing: -0.03em;
         }
-        
-        .service-purpose {
-            color: #94a3b8;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-        
-        .color-blue { color: #3b82f6; }
-        .color-green { color: #22c55e; }
-        .color-yellow { color: #eab308; }
-        .color-red { color: #ef4444; }
-        .color-purple { color: #a855f7; }
-        .color-cyan { color: #06b6d4; }
-        .color-orange { color: #f97316; }
-        .color-pink { color: #ec4899; }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .level-title {
-                font-size: 1.5em;
-            }
-            
-            .level-header {
-                flex-direction: column;
-            }
+
+        .service-purpose { color: var(--muted); margin: 2px 0 10px; }
+
+        .label { color: var(--ink); font-weight: 700; }
+
+        .color-blue, .color-green, .color-yellow, .color-red,
+        .color-purple, .color-cyan, .color-orange, .color-pink { color: var(--ink); }
+
+        @media (max-width: 700px) {
+            body { padding: 16px 12px 48px; }
+            .level-card { padding: 16px; border-radius: 18px; }
+            .tabs { width: 100%; }
+            .tab-btn { flex: 1; }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🧠 AI Engineer Roadmap 2026 ☁️</h1>
-            <p class="subtitle">Complete guide from basics to production AI systems with AWS focus</p>
+        <header class="hero">
+            <p class="eyebrow">Study guide · 2026</p>
+            <h1>AI Engineer Roadmap</h1>
+            <p class="subtitle">Concepts for interviews and daily AWS work. AI can write the code. You still choose the architecture.</p>
         </header>
         
         <div class="tabs">
@@ -1091,19 +1117,20 @@
         function renderRoadmap() {
             const container = document.getElementById('roadmap-content');
             container.innerHTML = roadmapData.map(level => `
-                <div class="level-card">
+                <article class="level-card">
                     <div class="level-header">
+                        <div class="level-num">${String(level.level).padStart(2, "0")}</div>
                         <div>
-                            <h2 class="level-title color-${level.color}">Level ${level.level}: ${level.title}</h2>
+                            <h2 class="level-title color-${level.color}">${level.title}</h2>
                             <p class="level-desc">${level.description}</p>
-                            ${level.awsRelevance ? `<div class="badge">⭐ ${level.awsRelevance}</div>` : ''}
+                            ${level.awsRelevance ? `<div class="badge">${level.awsRelevance}</div>` : ''}
                         </div>
                     </div>
                     ${level.topics.map((topic, idx) => `
                         <div class="topic" id="level${level.level}-topic${idx}">
                             <div class="topic-title" onclick="toggleTopic('level${level.level}-topic${idx}')">
                                 ${topic.title}
-                                <span class="arrow">▶</span>
+                                <span class="arrow" aria-hidden="true"></span>
                             </div>
                             <div class="topic-content">
                                 <div class="section">
@@ -1135,7 +1162,7 @@
                             </div>
                         </div>
                     `).join('')}
-                </div>
+                </article>
             `).join('');
         }
         
@@ -1143,11 +1170,11 @@
             const container = document.getElementById('aws-content');
             container.innerHTML = `
                 <div class="level-card">
-                    <h2 class="level-title" style="color: #fdba74;">☁️ AWS AI/ML Engineer Focus</h2>
+                    <h2 class="level-title">☁️ AWS AI/ML Engineer Focus</h2>
                     <p class="level-desc">Essential AWS services and concepts for AI/ML engineering roles</p>
                     
-                    <div style="margin-top: 30px;">
-                        <h3 style="color: #60a5fa; margin-bottom: 20px;">Core AI/ML Services</h3>
+                    <div class="stack">
+                        <h3 class="group-title">Core AI/ML Services</h3>
                         
                         <div class="service-card">
                             <h4 class="service-name">Amazon SageMaker</h4>
@@ -1159,7 +1186,7 @@
                                 <li>Model Monitor for drift detection</li>
                                 <li>Feature Store for ML features</li>
                             </ul>
-                            <div style="margin-top: 10px; color: #86efac;">
+                            <div class="when">
                                 <strong>When to use:</strong> Custom ML models, training at scale, MLOps
                             </div>
                         </div>
@@ -1174,7 +1201,7 @@
                                 <li>Guardrails for content filtering and safety</li>
                                 <li>Private and secure - data not used for training</li>
                             </ul>
-                            <div style="margin-top: 10px; color: #86efac;">
+                            <div class="when">
                                 <strong>When to use:</strong> LLM applications, chatbots, RAG, generative AI
                             </div>
                         </div>
@@ -1188,12 +1215,12 @@
                                 <li>Pay only for compute time used</li>
                                 <li>Integrates with 200+ AWS services</li>
                             </ul>
-                            <div style="margin-top: 10px; color: #86efac;">
+                            <div class="when">
                                 <strong>When to use:</strong> API backends, ML inference, event-driven processing
                             </div>
                         </div>
                         
-                        <h3 style="color: #60a5fa; margin: 30px 0 20px;">Pre-built AI Services</h3>
+                        <h3 class="group-title">Pre-built AI Services</h3>
                         
                         <div class="service-card">
                             <h4 class="service-name">Amazon Rekognition</h4>
@@ -1217,7 +1244,7 @@
                             </ul>
                         </div>
                         
-                        <h3 style="color: #fdba74; margin: 30px 0 20px;">🎯 Interview Topics for AWS Roles</h3>
+                        <h3 class="group-title">🎯 Interview Topics for AWS Roles</h3>
                         
                         <div class="service-card">
                             <h4 class="service-name">Service Selection</h4>
@@ -1246,11 +1273,11 @@
                             </ul>
                         </div>
                         
-                        <div class="aws-box" style="margin-top: 30px;">
-                            <h4 style="color: #fdba74; margin-bottom: 15px;">💡 Tips for AWS AI/ML Engineer Interviews</h4>
-                            <div style="margin-bottom: 15px;">
-                                <strong style="color: #93c5fd;">Before the Interview:</strong>
-                                <ul style="margin-top: 8px;">
+                        <div class="aws-box" class="stack">
+                            <h4 class="section-title aws">💡 Tips for AWS AI/ML Engineer Interviews</h4>
+                            <div >
+                                <strong class="label">Before the Interview:</strong>
+                                <ul >
                                     <li>Get AWS Certified Solutions Architect Associate</li>
                                     <li>Consider AWS Machine Learning Specialty certification</li>
                                     <li>Build 2-3 projects deployed on AWS</li>
@@ -1258,8 +1285,8 @@
                                 </ul>
                             </div>
                             <div>
-                                <strong style="color: #93c5fd;">During Technical Interviews:</strong>
-                                <ul style="margin-top: 8px;">
+                                <strong class="label">During Technical Interviews:</strong>
+                                <ul >
                                     <li>Always mention cost implications</li>
                                     <li>Discuss trade-offs between services</li>
                                     <li>Show security best practices awareness</li>

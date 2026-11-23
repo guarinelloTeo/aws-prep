@@ -50,38 +50,32 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
-        {/* Header */}
-        <div className="text-center mb-8 space-y-4">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Brain className="h-12 w-12 text-blue-400" />
-            <h1 className="text-5xl font-bold text-white">
-              AI Engineer Roadmap 2026
-            </h1>
-            <Cloud className="h-12 w-12 text-blue-400" />
-          </div>
-          <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-            Complete guide from basics to production AI systems with AWS focus. 
-            Learn concepts for interviews and real-world problem-solving.
+    <div className="min-h-screen bg-[#f4efe7] text-[#1c1915]">
+      <div className="container mx-auto px-4 py-10 max-w-3xl">
+        <div className="mb-8">
+          <p className="text-xs font-bold tracking-[0.16em] uppercase text-[#c2410c] mb-3">Study guide · 2026</p>
+          <h1 className="text-5xl sm:text-6xl font-serif tracking-tight leading-[0.95] text-[#1c1915]">
+            AI Engineer Roadmap
+          </h1>
+          <p className="mt-4 text-lg text-[#615b53] max-w-xl">
+            Concepts for interviews and daily AWS work. AI can write the code. You still choose the architecture.
           </p>
-          
-          <div className="bg-slate-800/50 backdrop-blur p-6 rounded-lg max-w-2xl mx-auto border border-blue-500/20">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-white font-semibold">Your Progress</span>
-              <span className="text-blue-300">{completedLevels.size} / {roadmapData.length} levels</span>
+          <div className="mt-6 bg-white/80 border border-[#e6ddd0] rounded-2xl p-4 max-w-xl">
+            <div className="flex items-center justify-between mb-2 text-sm">
+              <span className="font-semibold">Your progress</span>
+              <span className="text-[#615b53]">{completedLevels.size} / {roadmapData.length} levels</span>
             </div>
-            <Progress value={progress} className="h-3" />
+            <Progress value={progress} className="h-2" />
           </div>
         </div>
 
         <Tabs defaultValue="roadmap" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-8 bg-slate-800/50">
-            <TabsTrigger value="roadmap" className="data-[state=active]:bg-blue-600">
+          <TabsList className="grid w-full grid-cols-2 mb-8 bg-white/80 border border-[#e6ddd0] rounded-full h-12">
+            <TabsTrigger value="roadmap" className="rounded-full data-[state=active]:bg-[#1c1915] data-[state=active]:text-white">
               <Target className="h-4 w-4 mr-2" />
               Learning Roadmap
             </TabsTrigger>
-            <TabsTrigger value="aws" className="data-[state=active]:bg-blue-600">
+            <TabsTrigger value="aws" className="rounded-full data-[state=active]:bg-[#1c1915] data-[state=active]:text-white">
               <Cloud className="h-4 w-4 mr-2" />
               AWS Engineer Focus
             </TabsTrigger>
@@ -93,10 +87,10 @@ export default function Home() {
                 {roadmapData.map((level) => (
                   <Card 
                     key={level.id} 
-                    className={`bg-slate-800/50 backdrop-blur border-2 transition-all ${
+                    className={`bg-white/90 shadow-sm border transition-all rounded-3xl ${
                       completedLevels.has(level.id) 
-                        ? 'border-green-500/50 bg-green-900/10' 
-                        : 'border-slate-700/50 hover:border-blue-500/50'
+                        ? 'border-green-600' 
+                        : 'border-[#e6ddd0]'
                     }`}
                   >
                     <CardHeader>
@@ -110,13 +104,13 @@ export default function Home() {
                             {getIconForLevel(level.level)}
                           </div>
                           <div>
-                            <CardTitle className="text-2xl text-white flex items-center gap-2">
+                            <CardTitle className="text-2xl text-[#1c1915] font-serif tracking-tight flex items-center gap-2">
                               Level {level.level}: {level.title}
                               {completedLevels.has(level.id) && (
                                 <CheckCircle2 className="h-6 w-6 text-green-400" />
                               )}
                             </CardTitle>
-                            <CardDescription className="text-blue-200 text-base">
+                            <CardDescription className="text-[#615b53] text-base">
                               {level.description}
                             </CardDescription>
                             {level.awsRelevance && (
@@ -131,8 +125,8 @@ export default function Home() {
                           onClick={() => toggleLevel(level.id)}
                           className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                             completedLevels.has(level.id)
-                              ? 'bg-green-600 hover:bg-green-700 text-white'
-                              : 'bg-blue-600 hover:bg-blue-700 text-white'
+                              ? 'bg-[#166534] hover:bg-[#14532d] text-white'
+                              : 'bg-[#1c1915] hover:bg-black text-white'
                           }`}
                         >
                           {completedLevels.has(level.id) ? 'Completed' : 'Mark Complete'}
@@ -142,21 +136,21 @@ export default function Home() {
                     <CardContent>
                       <Accordion className="w-full">
                         {level.topics.map((topic, idx) => (
-                          <AccordionItem key={idx} value={`topic-${idx}`} className="border-slate-700">
-                            <AccordionTrigger className="text-white hover:text-blue-300">
+                          <AccordionItem key={idx} value={`topic-${idx}`} className="border-[#e6ddd0]">
+                            <AccordionTrigger className="text-[#1c1915] hover:text-[#c2410c]">
                               <span className="text-lg font-semibold">{topic.title}</span>
                             </AccordionTrigger>
                             <AccordionContent>
                               <div className="space-y-6 pl-4">
                                 {/* Key Concepts */}
                                 <div>
-                                  <h4 className="font-semibold text-blue-300 mb-3 flex items-center gap-2">
+                                  <h4 className="font-semibold text-[#615b53] uppercase tracking-wider text-xs mb-3 flex items-center gap-2">
                                     <BookOpen className="h-4 w-4" />
                                     Key Concepts to Understand
                                   </h4>
                                   <ul className="space-y-2">
                                     {topic.concepts.map((concept, i) => (
-                                      <li key={i} className="text-slate-300 flex items-start gap-2">
+                                      <li key={i} className="text-[#2c2824] flex items-start gap-2">
                                         <span className="text-blue-400 mt-1">▪</span>
                                         <span>{concept}</span>
                                       </li>
@@ -166,13 +160,13 @@ export default function Home() {
 
                                 {/* Interview Questions */}
                                 <div>
-                                  <h4 className="font-semibold text-orange-300 mb-3 flex items-center gap-2">
+                                  <h4 className="font-semibold text-[#92400e] uppercase tracking-wider text-xs mb-3 flex items-center gap-2">
                                     <Target className="h-4 w-4" />
                                     Common Interview Questions
                                   </h4>
                                   <ul className="space-y-2">
                                     {topic.interviewQuestions.map((question, i) => (
-                                      <li key={i} className="text-slate-300 flex items-start gap-2">
+                                      <li key={i} className="text-[#2c2824] flex items-start gap-2">
                                         <span className="text-orange-400 mt-1">❓</span>
                                         <span className="italic">{question}</span>
                                       </li>
@@ -182,13 +176,13 @@ export default function Home() {
 
                                 {/* Practical Tips */}
                                 <div>
-                                  <h4 className="font-semibold text-green-300 mb-3 flex items-center gap-2">
+                                  <h4 className="font-semibold text-[#166534] uppercase tracking-wider text-xs mb-3 flex items-center gap-2">
                                     <Zap className="h-4 w-4" />
                                     Practical Tips for Daily Work
                                   </h4>
                                   <ul className="space-y-2">
                                     {topic.practicalTips.map((tip, i) => (
-                                      <li key={i} className="text-slate-300 flex items-start gap-2">
+                                      <li key={i} className="text-[#2c2824] flex items-start gap-2">
                                         <span className="text-green-400 mt-1">💡</span>
                                         <span>{tip}</span>
                                       </li>
@@ -198,14 +192,14 @@ export default function Home() {
 
                                 {/* AWS Connections */}
                                 {topic.awsConnections && topic.awsConnections.length > 0 && (
-                                  <div className="bg-orange-900/20 border border-orange-500/30 rounded-lg p-4">
-                                    <h4 className="font-semibold text-orange-300 mb-3 flex items-center gap-2">
+                                  <div className="bg-[#fff1e8] border border-[#f0d2c2] rounded-2xl p-4">
+                                    <h4 className="font-semibold text-[#c2410c] uppercase tracking-wider text-xs mb-3 flex items-center gap-2">
                                       <Cloud className="h-4 w-4" />
                                       AWS Services for This Topic
                                     </h4>
                                     <ul className="space-y-2">
                                       {topic.awsConnections.map((connection, i) => (
-                                        <li key={i} className="text-orange-100 flex items-start gap-2">
+                                        <li key={i} className="text-[#7c2d12] flex items-start gap-2">
                                           <span className="text-orange-400 mt-1">☁️</span>
                                           <span>{connection}</span>
                                         </li>
@@ -228,30 +222,30 @@ export default function Home() {
           <TabsContent value="aws">
             <ScrollArea className="h-[calc(100vh-300px)]">
               <div className="space-y-6 pr-4">
-                <Card className="bg-gradient-to-br from-orange-900/30 to-blue-900/30 backdrop-blur border-2 border-orange-500/50">
+                <Card className="bg-white/90 border border-[#e6ddd0] rounded-3xl shadow-sm">
                   <CardHeader>
-                    <CardTitle className="text-3xl text-white flex items-center gap-3">
-                      <Cloud className="h-8 w-8 text-orange-400" />
+                    <CardTitle className="text-3xl text-[#1c1915] font-serif tracking-tight flex items-center gap-3">
+                      <Cloud className="h-8 w-8 text-[#c2410c]" />
                       {awsSpecificResources.title}
                     </CardTitle>
-                    <CardDescription className="text-blue-200 text-lg">
+                    <CardDescription className="text-[#615b53] text-lg">
                       {awsSpecificResources.description}
                     </CardDescription>
                   </CardHeader>
                 </Card>
 
                 {awsSpecificResources.categories.map((category, idx) => (
-                  <Card key={idx} className="bg-slate-800/50 backdrop-blur border-2 border-slate-700/50">
+                  <Card key={idx} className="bg-white/90 border border-[#e6ddd0] rounded-3xl shadow-sm">
                     <CardHeader>
-                      <CardTitle className="text-2xl text-white">{category.title}</CardTitle>
+                      <CardTitle className="text-2xl text-[#1c1915] font-serif tracking-tight">{category.title}</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                       {category.services && category.services.map((service, sIdx) => (
-                        <div key={sIdx} className="bg-slate-900/50 p-5 rounded-lg border border-blue-500/20">
+                        <div key={sIdx} className="bg-[#fffaf5] p-5 rounded-2xl border border-[#e6ddd0]">
                           <div className="flex items-start justify-between mb-3">
                             <div>
-                              <h3 className="text-xl font-bold text-blue-300">{service.name}</h3>
-                              <p className="text-slate-400 italic">{service.purpose}</p>
+                              <h3 className="text-xl font-serif text-[#1c1915]">{service.name}</h3>
+                              <p className="text-[#615b53]">{service.purpose}</p>
                             </div>
                             {service.whenToUse && (
                               <Badge variant="secondary" className="bg-green-700 text-white">
@@ -262,10 +256,10 @@ export default function Home() {
                           
                           <div className="space-y-3">
                             <div>
-                              <h4 className="font-semibold text-blue-300 mb-2">Key Features:</h4>
+                              <h4 className="font-semibold text-[#615b53] uppercase tracking-wider text-xs mb-2">Key Features</h4>
                               <ul className="space-y-1">
                                 {service.keyFeatures.map((feature, fIdx) => (
-                                  <li key={fIdx} className="text-slate-300 flex items-start gap-2">
+                                  <li key={fIdx} className="text-[#2c2824] flex items-start gap-2">
                                     <span className="text-blue-400">▪</span>
                                     <span>{feature}</span>
                                   </li>
@@ -275,8 +269,8 @@ export default function Home() {
                             
                             {service.whenToUse && (
                               <div className="bg-green-900/20 border border-green-500/30 rounded p-3">
-                                <span className="font-semibold text-green-300">When to use: </span>
-                                <span className="text-green-100">{service.whenToUse}</span>
+                                <span className="font-semibold text-[#166534]">When to use: </span>
+                                <span>{service.whenToUse}</span>
                               </div>
                             )}
                           </div>
@@ -284,11 +278,11 @@ export default function Home() {
                       ))}
 
                       {category.topics && category.topics.map((topic, tIdx) => (
-                        <div key={tIdx} className="bg-slate-900/50 p-5 rounded-lg border border-orange-500/20">
-                          <h3 className="text-xl font-bold text-orange-300 mb-4">{topic.category}</h3>
+                        <div key={tIdx} className="bg-[#fffaf5] p-5 rounded-2xl border border-[#e6ddd0]">
+                          <h3 className="text-xl font-serif text-[#1c1915] mb-4">{topic.category}</h3>
                           <ul className="space-y-3">
                             {topic.questions.map((question, qIdx) => (
-                              <li key={qIdx} className="text-slate-300 flex items-start gap-2">
+                              <li key={qIdx} className="text-[#2c2824] flex items-start gap-2">
                                 <span className="text-orange-400 mt-1">❓</span>
                                 <span className="italic">{question}</span>
                               </li>
@@ -301,16 +295,16 @@ export default function Home() {
                 ))}
 
                 {/* Additional AWS Tips */}
-                <Card className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur border-2 border-blue-500/50">
+                <Card className="bg-white/90 border border-[#e6ddd0] rounded-3xl shadow-sm">
                   <CardHeader>
-                    <CardTitle className="text-2xl text-white flex items-center gap-2">
+                    <CardTitle className="text-2xl text-[#1c1915] font-serif tracking-tight flex items-center gap-2">
                       <Award className="h-6 w-6 text-yellow-400" />
                       Tips for AWS AI/ML Engineer Interviews
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4 text-slate-200">
+                  <CardContent className="space-y-4 text-[#2c2824]">
                     <div className="space-y-2">
-                      <h4 className="font-semibold text-blue-300">Before the Interview:</h4>
+                      <h4 className="font-semibold text-[#1c1915]">Before the Interview</h4>
                       <ul className="space-y-1 ml-4">
                         <li>• Get AWS Certified Solutions Architect Associate (minimum)</li>
                         <li>• Consider AWS Machine Learning Specialty certification</li>
@@ -319,7 +313,7 @@ export default function Home() {
                       </ul>
                     </div>
                     <div className="space-y-2">
-                      <h4 className="font-semibold text-blue-300">During Technical Interviews:</h4>
+                      <h4 className="font-semibold text-[#1c1915]">During Technical Interviews</h4>
                       <ul className="space-y-1 ml-4">
                         <li>• Always mention cost implications of your design choices</li>
                         <li>• Discuss trade-offs between services (e.g., EC2 vs Lambda vs Fargate)</li>
@@ -329,7 +323,7 @@ export default function Home() {
                       </ul>
                     </div>
                     <div className="space-y-2">
-                      <h4 className="font-semibold text-blue-300">Common AWS ML Architecture Questions:</h4>
+                      <h4 className="font-semibold text-[#1c1915]">Common AWS ML Architecture Questions</h4>
                       <ul className="space-y-1 ml-4">
                         <li>• Design a real-time recommendation system on AWS</li>
                         <li>• Build a document processing pipeline with ML</li>
@@ -346,7 +340,7 @@ export default function Home() {
         </Tabs>
 
         {/* Footer */}
-        <div className="mt-8 text-center text-slate-400 text-sm">
+        <div className="mt-8 text-[#615b53] text-sm">
           <p>💡 Pro Tip: Focus on understanding concepts deeply. AI can write the code, but you need to architect solutions and solve problems.</p>
           <p className="mt-2">🎯 For AWS roles: Hands-on experience &gt; Certifications &gt; Theoretical knowledge</p>
         </div>
