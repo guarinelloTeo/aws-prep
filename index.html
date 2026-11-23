@@ -210,6 +210,10 @@
         .lesson.example { background: #f3f6fb; }
         .lesson.practice { background: #fff8ef; }
         .lesson.project { background: #f2f7f3; }
+        .lesson.watch { background: #f6f3fb; }
+        .lesson.watch a { color: #5b21b6; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
+        .watch-item { margin: 12px 0 4px; }
+        .watch-item .why { margin-top: 2px; }
         .lesson p { margin: 8px 0; color: #2c2824; }
         .lesson .meta { color: var(--muted); font-size: 0.92rem; }
         .lesson ol { margin: 8px 0 8px 1.2rem; }
@@ -1935,11 +1939,132 @@
 };
 
 
+        const videos = {
+            "Computer Basics": [
+                { title: "Early Computing: Crash Course Computer Science #1", channel: "CrashCourse", url: "https://www.youtube.com/watch?v=O5nskjZ_GoI", why: "Start of the series: what a computer is, before any code." },
+                { title: "The Central Processing Unit (CPU): Crash Course Computer Science #7", channel: "CrashCourse", url: "https://www.youtube.com/watch?v=FZGugFqdr60", why: "How a CPU actually runs an instruction. Watch this before Big O." }
+            ],
+            "Programming Fundamentals": [
+                { title: "Python for Everybody - Full University Python Course", channel: "freeCodeCamp.org · Dr. Chuck", url: "https://www.youtube.com/watch?v=8DvywoWv6fI", why: "University course: variables, loops, functions, and files, taught slowly." }
+            ],
+            "AI Introduction": [
+                { title: "But what is a neural network? | Deep learning chapter 1", channel: "3Blue1Brown", url: "https://www.youtube.com/watch?v=aircAruvnKk", why: "The clearest picture of what “the model learned” means, with no code required." }
+            ],
+            "Data Structures": [
+                { title: "CS50x 2023 - Lecture 5 - Data Structures", channel: "CS50", url: "https://www.youtube.com/watch?v=X8h4dq9Hzq8", why: "Harvard lecture on arrays, linked lists, hash tables, and tries, with the cost of each." }
+            ],
+            "Git and Version Control": [
+                { title: "Git and GitHub for Beginners - Crash Course", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=RGOj5yH7evk", why: "Commit, branch, push, and pull request in one sitting." }
+            ],
+            "Object-Oriented Programming": [
+                { title: "Python OOP Tutorial 1: Classes and Instances", channel: "Corey Schafer", url: "https://www.youtube.com/watch?v=ZDa-Z5JzLYM", why: "Class versus instance, in twenty minutes. Continue his playlist for inheritance." },
+                { title: "Object Oriented Programming with Python - Full Course for Beginners", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=Ej_02ICOIgs", why: "Same ideas built into one small application." }
+            ],
+            "APIs and Web Services": [
+                { title: "Django REST Framework Course – Build Web APIs with Python", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=tujhGdn1EMI", why: "A real HTTP API: routes, request bodies, and responses a client can call." }
+            ],
+            "System Design": [
+                { title: "System Design Interview Prep for Beginners (Full Course)", channel: "KodeKloud", url: "https://www.youtube.com/watch?v=oz5c88cO5P8", why: "The boxes interviewers expect: load balancer, cache, database, queue." },
+                { title: "System Design Interview Question: Design URL Shortener", channel: "Hayk Simonyan", url: "https://www.youtube.com/watch?v=16d35un5a9Q", why: "One classic question, walked from requirements to storage." }
+            ],
+            "Cloud Platforms (AWS Focus)": [
+                { title: "AWS Certified Cloud Practitioner Certification Course (CLF-C02)", channel: "freeCodeCamp.org · Andrew Brown", url: "https://www.youtube.com/watch?v=NhDYbskXRgc", why: "The map of AWS: regions, IAM, EC2, S3, Lambda, and what each one is for." }
+            ],
+            "SQL Databases": [
+                { title: "SQL Tutorial - Full Database Course for Beginners", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=HXV3zeQKqGY", why: "SELECT, JOIN, and GROUP BY on a real schema." }
+            ],
+            "NoSQL Databases": [
+                { title: "7 Common DynamoDB Patterns for Modeling and Building an App", channel: "FooBar Serverless · Alex DeBrie", url: "https://www.youtube.com/watch?v=Q6-qWdsa8a4", why: "Partition keys and access patterns, which is how DynamoDB is actually designed." },
+                { title: "Database Systems - Cornell University Course (SQL, NoSQL, Large-Scale Data)", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=4cWkVbC2bNE", why: "The university course behind both SQL and NoSQL, if you want the theory." }
+            ],
+            "NumPy & Pandas": [
+                { title: "Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=r-uOLxNrNk8", why: "Load a table, clean it, and answer a question with Pandas." }
+            ],
+            "Statistics": [
+                { title: "StatQuest: Histograms, Clearly Explained", channel: "StatQuest with Josh Starmer", url: "https://www.youtube.com/watch?v=qBigTkBLU6g", why: "Mean, spread, and why a picture of the data comes before a model." },
+                { title: "The Main Ideas behind Probability Distributions", channel: "StatQuest with Josh Starmer", url: "https://www.youtube.com/watch?v=oI3hZJqXJuc", why: "What a distribution is saying about the next measurement." }
+            ],
+            "Supervised Learning": [
+                { title: "StatQuest: Logistic Regression", channel: "StatQuest with Josh Starmer", url: "https://www.youtube.com/watch?v=yIYKR4sgzI8", why: "The first model you should be able to explain in an interview: features in, probability out." }
+            ],
+            "Unsupervised Learning": [
+                { title: "StatQuest: K-means clustering", channel: "StatQuest with Josh Starmer", url: "https://www.youtube.com/watch?v=4b5d3muPQmA", why: "How clustering works, and how you pick K." },
+                { title: "StatQuest: Principal Component Analysis (PCA), Step-by-Step", channel: "StatQuest with Josh Starmer", url: "https://www.youtube.com/watch?v=FgakZw6K1QQ", why: "What “reduce the dimensions” actually does to the data." }
+            ],
+            "Neural Networks": [
+                { title: "But what is a neural network? | Deep learning chapter 1", channel: "3Blue1Brown", url: "https://www.youtube.com/watch?v=aircAruvnKk", why: "Layers, weights, and a handwritten-digit network, drawn out." },
+                { title: "Gradient descent, how neural networks learn | Deep Learning Chapter 2", channel: "3Blue1Brown", url: "https://www.youtube.com/watch?v=IHZwWFHWa-w", why: "The update rule. Watch chapter 3, Backpropagation, right after it." }
+            ],
+            "CNNs & RNNs": [
+                { title: "Deep Learning for Computer Vision with Python and TensorFlow", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=IA3WxTTPXqQ", why: "Convolutional networks, from pixels to a trained image model." },
+                { title: "Let's build GPT: from scratch, in code, spelled out.", channel: "Andrej Karpathy", url: "https://www.youtube.com/watch?v=kCc8FmEb1nY", why: "The sequence model that replaced most RNN work. Hard, and worth one sitting." }
+            ],
+            "Image Processing": [
+                { title: "Lecture 2 | Image Classification", channel: "Stanford CS231n", url: "https://www.youtube.com/watch?v=OoUX-nOEjG0", why: "An image is a grid of numbers, and classification is a function of that grid." }
+            ],
+            "Object Detection": [
+                { title: "CS231n Winter 2016: Lecture 8: Localization and Detection", channel: "Andrej Karpathy · Stanford", url: "https://www.youtube.com/watch?v=GxZrEKZfW2o", why: "Why detection is not classification, and how a box is predicted." }
+            ],
+            "Text Processing": [
+                { title: "Let's build the GPT Tokenizer", channel: "Andrej Karpathy", url: "https://www.youtube.com/watch?v=zduSFxRajkE", why: "How text becomes the integers a model actually reads." },
+                { title: "Natural Language Processing (NLP) Tutorial with Python & NLTK", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=X2vAabgKiuM", why: "The older toolkit: tokens, entities, and the tasks before transformers." }
+            ],
+            "NLP Models": [
+                { title: "Attention in transformers, step-by-step | Deep Learning Chapter 6", channel: "3Blue1Brown", url: "https://www.youtube.com/watch?v=eMlx5fFNoYc", why: "What attention is doing, before you look at library code." },
+                { title: "Natural Language Processing with TensorFlow 2 - Beginner's Course", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=B2q5cRJvqI8", why: "Embeddings and a text model you train yourself." }
+            ],
+            "Foundation Models": [
+                { title: "[1hr Talk] Intro to Large Language Models", channel: "Andrej Karpathy", url: "https://www.youtube.com/watch?v=zjkBMFhNj_g", why: "Training, inference, tools, and the failure modes, in one hour." },
+                { title: "Let's build GPT: from scratch, in code, spelled out.", channel: "Andrej Karpathy", url: "https://www.youtube.com/watch?v=kCc8FmEb1nY", why: "The same idea, line by line, so the talk stops being magic." }
+            ],
+            "Prompt Engineering": [
+                { title: "Prompt Engineering for Web Devs - ChatGPT and Bard Tutorial", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=ScKCy2udln8", why: "Format, examples, roles, and how to tell a hallucination from an answer." }
+            ],
+            "RAG & LangChain": [
+                { title: "Learn RAG From Scratch – Python AI Tutorial from a LangChain Engineer", channel: "freeCodeCamp.org · Lance Martin", url: "https://www.youtube.com/watch?v=sVcwVQRHIc8", why: "Chunk, embed, retrieve, then put the passages in the prompt. Taught by a LangChain engineer." }
+            ],
+            "API Testing": [
+                { title: "CRUD API Tutorial – Node, Express, MongoDB", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=_7UQPve99r4", why: "Build the API, then hit every route with Postman, Thunder Client, and Insomnia." },
+                { title: "Python API Development - Comprehensive Course for Beginners", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=0sOvCWFmrtA", why: "The long version: Postman while you build, then automated tests so a change cannot silently break a route." }
+            ],
+            "Infrastructure as Code": [
+                { title: "Terraform Course - Automate your AWS cloud infrastructure", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=SLB_c_ayRMo", why: "Resources, state, and a small AWS deploy you can destroy." },
+                { title: "Learn Terraform (and AWS) by Building a Dev Environment", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=iRaai1IBlB0", why: "VPC, security group, and an EC2 instance described as code." }
+            ],
+            "Agent Frameworks": [
+                { title: "The Journey of a Prompt: How AI Agents Think, Plan, and Act", channel: "Meenal Gupta", url: "https://www.youtube.com/watch?v=btM5wfWnFkw", why: "The loop: thought, tool call, observation, then another thought." }
+            ],
+            "Production Best Practices": [
+                { title: "MLOps Course – Build Machine Learning Production Grade Projects", channel: "freeCodeCamp.org", url: "https://www.youtube.com/watch?v=-dJPoLm_gtE", why: "From a notebook to a versioned, deployable pipeline with MLflow and ZenML." }
+            ],
+            "Getting Hired": [
+                { title: "Everything I Learned Interviewing 1,000+ Engineers at Meta.", channel: "Jean Lee", url: "https://www.youtube.com/watch?v=hH6lxdVzrV4", why: "What a behavioral interviewer is scoring, from someone who ran those loops." },
+                { title: "STAR Method Interview: How to Answer Behavioral Questions (With Examples)", channel: "Jay Feng", url: "https://www.youtube.com/watch?v=dRqN4BuhCHU", why: "Situation, task, action, result, with a weak answer and a strong one side by side." }
+            ]
+        };
+
+        function esc(s) {
+            return String(s).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+        }
+
+        function watchHtml(title) {
+            const list = videos[title];
+            if (!list) return "";
+            const items = list.map(v => `
+                <div class="watch-item">
+                    <a href="${esc(v.url)}" target="_blank" rel="noopener noreferrer">${esc(v.title)}</a>
+                    <p class="meta">${esc(v.channel)}</p>
+                    <p class="why">${esc(v.why)}</p>
+                </div>`).join("");
+            return `<div class="lesson watch"><h4 class="section-title">Watch</h4>${items}</div>`;
+        }
+
         function lessonHtml(title) {
             const L = lessons[title];
             if (!L) return "";
             const steps = L.steps.map(step => `<li>${step}</li>`).join("");
             return `
+                ${watchHtml(title)}
                 <div class="lesson example">
                     <h4 class="section-title">Worked example</h4>
                     <p>${L.example}</p>
